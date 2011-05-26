@@ -39,4 +39,4 @@ remoteuser = <you@gmx.com>
 remotepass = <password>
 nametrans = lambda folder: re.sub('^inbox$', 'INBOX', folder.lower())
 
-# vim: ft=cfg tw=0
+# vim: ft=python

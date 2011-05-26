@@ -28,3 +28,5 @@ tls_nocertcheck
 
 # use gmail as default
 account default : gmail
+
+# vim: ft=cfg

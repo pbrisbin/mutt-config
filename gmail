@@ -1,7 +1,3 @@
-###
-# gmail specific options
-###
-
 color status green default
 
   set from      = "pbrisbin@gmail.com"
@@ -13,3 +9,5 @@ unset record
 macro index E "<change-folder>+GMail/all_mail<enter><limit>~B " "search everything"
 macro index D "<save-message>+GMail/trash<enter>" 	        "move message to the trash"
 macro index S "<save-message>+GMail/spam<enter>" 	        "mark message as spam"
+
+# vim: ft=muttrc

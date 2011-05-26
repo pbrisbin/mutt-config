@@ -1,7 +1,3 @@
-###
-# mutt 256 colors file
-###
-
 # source main colors and override
 source ~/.mutt/colors.muttrc
 
@@ -25,3 +21,5 @@ uncolor index "~D"
 
 # smileys
   color body       color172      default "(^| )+(:[-^]?[][)(><}{|/DP])[\.\ $]+"
+
+# vim: ft=muttrc

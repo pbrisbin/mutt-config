@@ -1,7 +1,3 @@
-###
-# gmx specific options
-###
-
 color status cyan default
 
   set from      = "pbrisbin@gmx.com"
@@ -13,3 +9,5 @@ color status cyan default
 macro index A "<save-message>+GMX/archive<enter>" "archive message"
 macro index D "<save-message>+GMX/trash<enter>"   "move message to the trash"
 macro index S "<save-message>+GMX/spam<enter>" 	  "mark message as spam"
+
+# vim: ft=muttrc
