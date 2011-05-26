@@ -1,7 +1,7 @@
 # An example offlineimaprc which syncs two accounts. one synced to
 # ~/Mail/GMail and the other synced to ~/Mail/GMX
 [general]
-ui = TTY.TTYUI
+ui = ttyui
 accounts = GMail,GMX
 
 [Account GMail]
