@@ -73,18 +73,18 @@ mailboxes +--Gmail------------- +GMail/INBOX +GMail/all_mail +GMail/disqus +GMai
 mailboxes +--Gmx--------------- +GMX/INBOX +GMX/archive +GMX/sent +GMX/drafts +GMX/trash
 
 source $alias_file                                                # required for functionality
-source ~/.mutt/gmail.muttrc                                       # source gmail as default
+source ~/.mutt/gmail
 
-# uncomment to conditionally source 256colors.muttrc
-#source `FILE=$HOME/.mutt/colors.muttrc; [[ $TERM =~ 256 ]] && FILE=$HOME/.mutt/256colors.muttrc; echo $FILE`
-source ~/.mutt/colors.muttrc
+# uncomment to conditionally source 256colors
+#source `FILE=$HOME/.mutt/colors; [[ $TERM =~ 256 ]] && FILE=$HOME/.mutt/256colors; echo $FILE`
+source ~/.mutt/colors
 
 # source sidebar options if mutt -v says that patch is present
-source `FILE=$HOME/.mutt/sidebar.muttrc; mutt -v | grep -Fq sidebar || FILE=/dev/null; echo $FILE`
+source `FILE=$HOME/.mutt/sidebar; mutt -v | grep -Fq sidebar || FILE=/dev/null; echo $FILE`
 
 # override with account specific folder-hooks
-folder-hook GMail/*      source ~/.mutt/gmail.muttrc
-folder-hook GMX/*        source ~/.mutt/gmx.muttrc
+folder-hook GMail/*      source ~/.mutt/gmail
+folder-hook GMX/*        source ~/.mutt/gmx
 
 # alternate "me"s
 alternates (pbrisbin@(gmail|gmx).com|.*@pbrisbin.com)
