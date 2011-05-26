@@ -1,5 +1,5 @@
-# An example offlineimaprc which syncs two accounts. one synced to ~/Mail/GMail
-# and the other synced to ~/Mail/GMX
+# An example offlineimaprc which syncs two accounts. one synced to
+# ~/Mail/GMail and the other synced to ~/Mail/GMX
 [general]
 ui = TTY.TTYUI
 accounts = GMail,GMX
@@ -39,4 +39,4 @@ remoteuser = <you@gmx.com>
 remotepass = <password>
 nametrans = lambda folder: re.sub('^inbox$', 'INBOX', folder.lower())
 
-# vim: ft=python
+# vim: ft=cfg
