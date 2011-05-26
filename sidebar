@@ -1,7 +1,3 @@
-###
-# options specific to mutt's sidebar patch
-###
-
 # settings
   set sidebar_delim       = '│'
   set sidebar_visible     = yes
@@ -14,3 +10,5 @@ color sidebar_new brightyellow default
 bind index,pager \CJ sidebar-next
 bind index,pager \CK sidebar-prev
 bind index,pager \CL sidebar-open
+
+# vim: ft=muttrc
