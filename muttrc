@@ -1,31 +1,4 @@
-###
 # ~/.mutt/muttrc
-####
-#
-# pacout mutt && aurget -S uber-mutt # do it, nou!
-#
-# new:
-#
-#   attach patch
-#
-# from mutt-sidebar:
-#
-#   sidebar patch
-#   unmailbox patch
-#   trash folder patch
-#
-# from repo version:
-#
-#   ssl patch
-#
-###
-
-# mutt-attach patch; these are the default values, just so you can see
-# how the patch works
-  set attach_keyword      = "attach"  # if i try to send a message with the string "attach"
-  set abort_noattach      = "ask-yes" # in the body, but i've not actually attached a file,
-                                      # prompt me, "cancel send?"; default is to answer
-                                      # yes, "do not send."
 
 # directories and commands
   set alias_file          = ~/.mutt/alias                         # alias file
@@ -37,8 +10,6 @@
   set tmpdir              = ~/.mutt/temp                          # where to keep temp files
   set editor              = "vim +:silent+?^$"                    # use vim and skip to last blank line
   set ispell              = "aspell -e -c"                        # use aspell as ispell
-#  set query_command       = "abook --mutt-query '%s'"             # query abook for contacts
-#  set query_command       = "DM_ROOT=$HOME/.dm $HOME/.dm/bin/contacts.py -m short -r -s name %s" # query google directly
   set query_command       = "mail-query '%s' ~/Mail/GMail/INBOX"  # query existing mails
   set print_command       = "enscript -p - | psselect -r | lp"    # print email in reverse page order
 
@@ -101,16 +72,15 @@ subscribe arch-announce arch-dev-public aur-general xmonad arch-haskell web-deve
 mailboxes +--Gmail------------- +GMail/INBOX +GMail/all_mail +GMail/disqus +GMail/arch_lists +GMail/xmonad_list +GMail/web_devel +GMail/sent_mail +GMail/notes +GMail/drafts +GMail/trash 
 mailboxes +--Gmx--------------- +GMX/INBOX +GMX/archive +GMX/sent +GMX/drafts +GMX/trash
 
-# conditionally source a 256 colors file
+source $alias_file                                                # required for functionality
+source ~/.mutt/gmail.muttrc                                       # source gmail as default
+
+# uncomment to conditionally source 256colors.muttrc
 #source `FILE=$HOME/.mutt/colors.muttrc; [[ $TERM =~ 256 ]] && FILE=$HOME/.mutt/256colors.muttrc; echo $FILE`
 source ~/.mutt/colors.muttrc
 
-# conditionally source sidebar options 
+# source sidebar options if mutt -v says that patch is present
 source `FILE=$HOME/.mutt/sidebar.muttrc; mutt -v | grep -Fq sidebar || FILE=/dev/null; echo $FILE`
-
-# these are always sourced
-source $alias_file                                                # required for functionality
-source ~/.mutt/gmail.muttrc                                       # source gmail as default
 
 # override with account specific folder-hooks
 folder-hook GMail/*      source ~/.mutt/gmail.muttrc
@@ -150,12 +120,11 @@ macro index I   "<change-folder>!<enter>" "go to Inbox"
 macro index P   "<pipe-message>cat > ~/" "save message as"
 macro index Z   "<shell-escape>offlineimap -q -o<return>" "sync IMAP"
 
-# abook support
-macro generic,index,pager \Ca "<shell-escape>abook<return>" "launch abook"
-macro index,pager         A   "<pipe-message>abook --add-email<return>" "add sender to abook"
-
-# cc myself when replying to an ML; note: with this, you can't just :q!
-# mid-compose to abort; instead, just :wq and abort from the compose
-# menu
+# cc myself when replying to an ML.
+#
+# note: with this, you can't use `:q!` mid-compose to abort the message.
+# instead, you should use `:wq` and abort from the compose menu
 unhook send-hook
 send-hook "~u" "push '<edit-cc>,pbrisbin@gmail.com<enter>'"
+
+# vim: ft=muttrc
