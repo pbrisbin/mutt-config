@@ -1,0 +1,5 @@
+certificates
+cache/*
+temp/*
+alias
+*.bak
