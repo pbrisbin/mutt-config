@@ -86,6 +86,9 @@ source `FILE=$HOME/.mutt/sidebar; mutt -v | grep -Fq sidebar || FILE=/dev/null; 
 folder-hook GMail/*      source ~/.mutt/gmail
 folder-hook GMX/*        source ~/.mutt/gmx
 
+# collapse all thread in ML folders
+folder-hook GMail/(arch_lists|xmonad_list|web_devel) "exec collapse-all"
+
 # alternate "me"s
 alternates (pbrisbin@(gmail|gmx).com|.*@pbrisbin.com)
 
