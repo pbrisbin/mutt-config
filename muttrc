@@ -123,6 +123,10 @@ macro index I   "<change-folder>!<enter>" "go to Inbox"
 macro index P   "<pipe-message>cat > ~/" "save message as"
 macro index Z   "<shell-escape>offlineimap -q -o<return>" "sync IMAP"
 
+# search via mairix
+macro index,pager ",s" "<shell-escape>$HOME/.mutt/msearch " "Search messages"
+macro index,pager ",f" "<change-folder-readonly>=mfolder\n" "View search results"
+
 # cc myself when replying to an ML.
 #
 # note: with this, you can't use `:q!` mid-compose to abort the message.

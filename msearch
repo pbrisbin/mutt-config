@@ -1,0 +1,24 @@
+#!/bin/bash
+#
+# macro index,pager ",s" "<shell-escape>$HOME/.mutt/msearch " "Search messages"
+# 
+###
+
+read_from_config() {
+  local key="$1" config="$HOME/.mairixrc"
+
+  sed '/^'"$key"'=\([^ ]*\) *.*$/!d; s//\1/g' "$config"
+}
+
+read -r base    < <(read_from_config 'base')
+read -r mfolder < <(read_from_config 'mfolder')
+
+# prevent rm / further down...
+[[ -z "$base$mfolder" ]] && exit 1
+
+searchdir="$base/$mfolder"
+
+echo "Searching..."
+rm -rf "$searchdir"
+mairix -p # update index
+mairix $* # execute search
