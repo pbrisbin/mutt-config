@@ -116,16 +116,17 @@ bind index J          next-unread
 bind index,pager R    group-reply
 
 # macros
-macro index h   "c?" "view folders"
-macro index \Cr "<tag-pattern>all<enter><tag-prefix><clear-flag>N<untag-pattern>all<enter>" "mark all as read"
-macro index B   "<limit>~b " "search message bodies"
-macro index I   "<change-folder>!<enter>" "go to Inbox"
-macro index P   "<pipe-message>cat > ~/" "save message as"
-macro index Z   "<shell-escape>offlineimap -q -o<return>" "sync IMAP"
+macro index h  "c?" "view folders"
+macro index ,i "<change-folder>!<enter>" "go to Inbox"
+macro index ,p "<pipe-message>cat > ~/" "save message as"
+macro index ,z "<shell-escape>offlineimap -q -o<return>" "sync IMAP"
+macro index ,r "<tag-pattern>all<enter><tag-prefix><clear-flag>N<untag-pattern>all<enter>" "mark all as read"
+macro index ,V "<collapse-all>" "collapse/uncollapse all threads"
+macro index ,v "<collapse-thread>" "collapse/uncollapse thread"
 
 # search via mairix
-macro index,pager ",s" "<shell-escape>$HOME/.mutt/msearch " "Search messages"
-macro index,pager ",f" "<change-folder-readonly>=mfolder\n" "View search results"
+macro index,pager ,s "<shell-escape>$HOME/.mutt/msearch " "Search messages"
+macro index,pager ,f "<change-folder-readonly>=mfolder\n" "View search results"
 
 # cc myself when replying to an ML.
 #
