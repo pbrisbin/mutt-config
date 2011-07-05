@@ -93,46 +93,45 @@ folder-hook GMail/(arch_lists|xmonad_list|web_devel) "exec collapse-all"
 alternates (pbrisbin@(gmail|gmx).com|.*@pbrisbin.com)
 
 # these just give me headaches
-bind index,pager \#   noop
-bind index,pager \&   noop
-bind index i          noop
+bind index,pager \# noop
+bind index,pager \& noop
+bind index i        noop
 
 # bindings -- very vim-like
-bind pager i          exit
-bind pager q          toggle-quoted
-bind pager /          search
-bind pager <up>       previous-line
-bind pager <down>     next-line
-bind pager k          previous-line
-bind pager j          next-line
-bind pager gg         top
-bind pager G          bottom
-bind index gg         first-entry
-bind index G          last-entry
-bind pager K          previous-undeleted
-bind pager J          next-undeleted
-bind index K          previous-unread
-bind index J          next-unread
-bind index,pager R    group-reply
+bind pager i       exit
+bind pager q       toggle-quoted
+bind pager /       search
+bind pager <up>    previous-line
+bind pager <down>  next-line
+bind pager k       previous-line
+bind pager j       next-line
+bind pager gg      top
+bind pager G       bottom
+bind index gg      first-entry
+bind index G       last-entry
+bind pager K       previous-undeleted
+bind pager J       next-undeleted
+bind index K       previous-unread
+bind index J       next-unread
+bind index,pager R group-reply
 
 # macros
-macro index h  "c?" "view folders"
-macro index ,i "<change-folder>!<enter>" "go to Inbox"
+macro index ,i "<change-folder>!<return>" "go to inbox"
 macro index ,p "<pipe-message>cat > ~/" "save message as"
 macro index ,z "<shell-escape>offlineimap -q -o<return>" "sync IMAP"
-macro index ,r "<tag-pattern>all<enter><tag-prefix><clear-flag>N<untag-pattern>all<enter>" "mark all as read"
-macro index ,V "<collapse-all>" "collapse/uncollapse all threads"
+macro index ,r "<tag-pattern>all<return><tag-prefix><clear-flag>N<untag-pattern>all<return>" "mark all as read"
+macro index ,V "<collapse-all>"    "collapse/uncollapse all threads"
 macro index ,v "<collapse-thread>" "collapse/uncollapse thread"
 
-# search via mairix
-macro index,pager ,s "<shell-escape>$HOME/.mutt/msearch " "Search messages"
-macro index,pager ,f "<change-folder-readonly>=mfolder\n" "View search results"
+# search via mairix. note: don't hit ^G without clearing the prompt or
+# mutt will execute whatever commands correspond to those keys
+macro generic ,s "<enter-command>set my_cmd = \`$HOME/.mutt/msearch\`<return><enter-command>push \$my_cmd<return>" "search messages"
 
 # cc myself when replying to an ML.
 #
 # note: with this, you can't use `:q!` mid-compose to abort the message.
 # instead, you should use `:wq` and abort from the compose menu
 unhook send-hook
-send-hook "~u" "push '<edit-cc>,pbrisbin@gmail.com<enter>'"
+send-hook "~u" "push '<edit-cc>,pbrisbin@gmail.com<return>'"
 
 # vim: ft=muttrc

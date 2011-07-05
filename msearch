@@ -1,8 +1,4 @@
 #!/bin/bash
-#
-# macro index,pager ",s" "<shell-escape>$HOME/.mutt/msearch " "Search messages"
-# 
-###
 
 read_from_config() {
   local key="$1" config="$HOME/.mairixrc"
@@ -18,7 +14,44 @@ read -r mfolder < <(read_from_config 'mfolder')
 
 searchdir="$base/$mfolder"
 
-echo "Searching..."
-rm -rf "$searchdir"
-mairix -p # update index
-mairix $* # execute search
+set -f                          # disable globbing.
+exec < /dev/tty 3>&1 > /dev/tty # restore stdin/stdout to the terminal,
+                                # fd 3 goes to mutt's backticks.
+saved_tty_settings=$(stty -g)   # save tty settings before modifying
+                                # them
+
+# trap <Ctrl-G> to cancel search
+trap '
+  printf "\r"; tput ed; tput rc
+  #printf "<return>" >&3
+  stty "$saved_tty_settings"
+  exit
+' INT TERM
+
+# put the terminal in cooked mode. Set eof to <return> so that pressing
+# <return> doesn't move the cursor to the next line. Disable <Ctrl-Z>
+stty icanon echo -ctlecho crterase erase '^h' eof '^M' intr '^G' susp ''
+
+set $(stty size) # retrieve the size of the screen
+tput sc          # save cursor position
+tput cup "$1" 0  # go to last line of the screen
+tput ed          # clear and write prompt
+tput sgr0
+printf 'Search: '
+
+# read from the terminal. We can't use "read" because, there won't be
+# any NL in the input as <return> is eof.
+search=$(dd count=1 2>/dev/null)
+
+# clear the folder and execute a fresh search
+( rm -rf "$searchdir"
+  mairix -p
+  mairix $search
+) &>/dev/null
+
+# fix the terminal
+printf '\r'; tput ed; tput rc
+stty "$saved_tty_settings"
+
+# to be executed by mutt when we return
+printf "<change-folder-readonly>=$mfolder<return>" >&3
