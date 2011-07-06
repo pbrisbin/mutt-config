@@ -39,6 +39,7 @@ unset sort_re                                                     # always threa
   set thread_received                                             # sort threads by date received, not sent
   set tilde                                                       # show tildes like in vim
   set timeout             = 3                                     # idle time before scanning
+unset wait_key                                                    # don't show "Press any key to continue"
 
 # enriched messages
 auto_view text/html                                               # view html automatically
@@ -123,8 +124,7 @@ macro index ,r "<tag-pattern>all<return><tag-prefix><clear-flag>N<untag-pattern>
 macro index ,V "<collapse-all>"    "collapse/uncollapse all threads"
 macro index ,v "<collapse-thread>" "collapse/uncollapse thread"
 
-# search via mairix. note: don't hit ^G without clearing the prompt or
-# mutt will execute whatever commands correspond to those keys
+# perform a mairix search
 macro generic ,s "<enter-command>set my_cmd = \`$HOME/.mutt/msearch\`<return><enter-command>push \$my_cmd<return>" "search messages"
 
 # cc myself when replying to an ML.
