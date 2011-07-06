@@ -23,21 +23,21 @@ saved_tty_settings=$(stty -g)   # save tty settings before modifying
 # trap <Ctrl-G> to cancel search
 trap '
   printf "\r"; tput ed; tput rc
-  #printf "<return>" >&3
+  printf "/" >&3
   stty "$saved_tty_settings"
   exit
 ' INT TERM
 
 # put the terminal in cooked mode. Set eof to <return> so that pressing
 # <return> doesn't move the cursor to the next line. Disable <Ctrl-Z>
-stty icanon echo -ctlecho crterase erase '^h' eof '^M' intr '^G' susp ''
+stty icanon echo -ctlecho crterase eof '^M' intr '^G' susp ''
 
 set $(stty size) # retrieve the size of the screen
 tput sc          # save cursor position
 tput cup "$1" 0  # go to last line of the screen
 tput ed          # clear and write prompt
 tput sgr0
-printf 'Search: '
+printf 'Mairix search for: '
 
 # read from the terminal. We can't use "read" because, there won't be
 # any NL in the input as <return> is eof.
