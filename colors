@@ -8,19 +8,31 @@
   color error      brightred     default
   color message    brightyellow  default
 
-# uncolor certain messages
-uncolor index "~P"
-uncolor index "~N ~u"
-uncolor index "~N !~u"
-uncolor index "~T"
-uncolor index "~D"
+#
+# message states
+#
+# order matters here since some states override others
+#
 
-# and recolor them appropriately
-  color index      brightblack   default "~P"
-  color index      brightcyan    default "~N ~u"  # new ML mail
-  color index      brightyellow  default "~N !~u" # new non-ML mail
-  color index      brightgreen   default "~T"
-  color index      brightred     default "~D"
+# messages to me
+uncolor index "~P"
+  color index brightblack default "~P"
+
+# threads containing new messages
+uncolor index "~(~N)"
+  color index brightcyan default "~(~N)"
+
+# new messages themselves
+uncolor index "~N"
+  color index brightyellow default "~N"
+
+# tagged
+uncolor index "~T"
+  color index brightgreen default "~T"
+
+# deleted
+uncolor index "~D"
+  color index brightred default "~D"
 
 # set up the headers
   color header     brightyellow  default "^from:"
