@@ -69,8 +69,8 @@ unignore from: to: cc: date: subject:                             # show only th
 hdr_order from: to: cc: date: subject:                            # and in this order
 
 # lists and boxes
-subscribe arch-announce arch-dev-public aur-general xmonad arch-haskell web-devel
-mailboxes +--Gmail------------- +GMail/INBOX +GMail/all_mail +GMail/arch_lists +GMail/xmonad_list +GMail/web_devel +GMail/sent_mail +GMail/notes +GMail/drafts +GMail/trash 
+subscribe arch-announce arch-dev-public aur-general xmonad arch-haskell web-devel yesod
+mailboxes +--Gmail------------- +GMail/INBOX +GMail/all_mail +GMail/arch_lists +GMail/xmonad_list +GMail/web_devel +GMail/yesod +GMail/sent_mail +GMail/notes +GMail/drafts +GMail/trash 
 mailboxes +--Gmx--------------- +GMX/INBOX +GMX/archive +GMX/sent +GMX/drafts +GMX/trash
 
 source $alias_file                                                # required for functionality
@@ -88,7 +88,7 @@ folder-hook GMail/*      source ~/.mutt/gmail
 folder-hook GMX/*        source ~/.mutt/gmx
 
 # collapse all thread in ML folders
-folder-hook GMail/(arch_lists|xmonad_list|web_devel) "exec collapse-all"
+folder-hook GMail/(arch_lists|xmonad_list|web_devel|yesod) "exec collapse-all"
 
 # alternate "me"s
 alternates (pbrisbin@(gmail|gmx).com|.*@pbrisbin.com)
@@ -125,8 +125,13 @@ macro index ,R "<collapse-all><tag-pattern>all<return><tag-prefix><clear-flag>N<
 macro index ,v "<collapse-thread>" "collapse/uncollapse thread"
 macro index ,V "<collapse-all>"    "collapse/uncollapse all threads"
 
-# perform a mairix search
-macro generic ,s "<enter-command>set my_cmd = \`$HOME/.mutt/msearch\`<return><enter-command>push \$my_cmd<return>" "search messages"
+#macro index ,s \
+  #"<enter-command>set my_cmd = \`$HOME/.mutt/msearch\`<return><enter-command>push \$my_cmd<return>" \
+  #"search mail (using mairix)"
+
+macro index ,s \
+  "<enter-command>unset wait_key<enter><shell-escape>mutt-notmuch --prompt search<enter><change-folder-readonly>~/.cache/mutt_results<enter>" \
+  "search mail (using notmuch)"
 
 # cc myself when replying to an ML.
 #
