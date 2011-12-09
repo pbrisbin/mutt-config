@@ -62,6 +62,7 @@ alternative_order text/plain text/enriched text/html              # but save it 
   set include                                                     # include message in replies
   set realname            = "Patrick Brisbin"                     # who am i?
   set reply_to                                                    # reply to Reply-to: field, not From:
+  set reverse_name                                                # reply as who it was sent to (see alternates)
 
 # headers to show
 ignore *                                                          # ignore all headers
