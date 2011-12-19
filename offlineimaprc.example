@@ -29,6 +29,8 @@ type = Gmail
 remoteuser = <you@gmail.com>
 remotepass = <password>
 realdelete = no
+
+# "[Gmail]/All Mail" --> all_mail
 nametrans = lambda folder: re.sub('^inbox$', 'INBOX', re.sub(' +', '_', re.sub(r'.*/(.*)$', r'\1', folder).lower()))
 
 [Repository GMX-Remote]
@@ -37,6 +39,8 @@ remotehost = imap.gmx.com
 remoteport = 143
 remoteuser = <you@gmx.com>
 remotepass = <password>
+
+# Archive --> archive
 nametrans = lambda folder: re.sub('^inbox$', 'INBOX', folder.lower())
 
 # vim: ft=cfg
