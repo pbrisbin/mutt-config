@@ -1,8 +1,8 @@
 # An example offlineimaprc which syncs two accounts. one synced to
-# ~/Mail/GMail and the other synced to ~/Mail/GMX
+# ~/Mail/GMail and the other synced to ~/Mail/Ideeli
 [general]
 ui = ttyui
-accounts = GMail,GMX
+accounts = GMail,Ideeli
 
 [Account GMail]
 localrepository = Gmail-Local
@@ -10,9 +10,9 @@ remoterepository = Gmail-Remote
 maxsyncaccounts = 3
 maxconnections = 3
 
-[Account GMX]
-localrepository = GMX-Local
-remoterepository = GMX-Remote
+[Account Ideeli]
+localrepository = Ideeli-Local
+remoterepository = Ideeli-Remote
 maxsyncaccounts = 3
 maxconnections = 3
 
@@ -20,9 +20,9 @@ maxconnections = 3
 type = Maildir
 localfolders = ~/Mail/GMail
 
-[Repository GMX-Local]
+[Repository Ideeli-Local]
 type = Maildir
-localfolders = ~/Mail/GMX
+localfolders = ~/Mail/Ideeli
 
 [Repository Gmail-Remote]
 type = Gmail
@@ -33,14 +33,13 @@ realdelete = no
 # "[Gmail]/All Mail" --> all_mail
 nametrans = lambda folder: re.sub('^inbox$', 'INBOX', re.sub(' +', '_', re.sub(r'.*/(.*)$', r'\1', folder).lower()))
 
-[Repository GMX-Remote]
-type = IMAP
-remotehost = imap.gmx.com
-remoteport = 143
-remoteuser = <you@gmx.com>
+[Repository Ideeli-Remote]
+type = Gmail
+remoteuser = <you@ideeli.com>
 remotepass = <password>
+realdelete = no
 
-# Archive --> archive
-nametrans = lambda folder: re.sub('^inbox$', 'INBOX', folder.lower())
+# "[Gmail]/All Mail" --> all_mail
+nametrans = lambda folder: re.sub('^inbox$', 'INBOX', re.sub(' +', '_', re.sub(r'.*/(.*)$', r'\1', folder).lower()))
 
 # vim: ft=cfg

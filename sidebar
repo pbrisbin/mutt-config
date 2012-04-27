@@ -13,5 +13,4 @@ bind index,pager \CJ sidebar-next
 bind index,pager \CK sidebar-prev
 bind index,pager \CL sidebar-open
 
-
 # vim: ft=muttrc

@@ -72,7 +72,7 @@ hdr_order from: to: cc: date: subject:                            # and in this 
 # lists and boxes
 subscribe arch-announce arch-dev-public aur-general xmonad arch-haskell web-devel yesod
 mailboxes +--Gmail------------- +GMail/INBOX +GMail/all_mail +GMail/arch_lists +GMail/xmonad_list +GMail/web_devel +GMail/yesod +GMail/sent_mail +GMail/notes +GMail/drafts +GMail/trash 
-mailboxes +--Gmx--------------- +GMX/INBOX +GMX/archive +GMX/sent +GMX/drafts +GMX/trash
+mailboxes +--Ideeli------------ +Ideeli/INBOX +Ideeli/all_mail +Ideeli/sent_mail +Ideeli/drafts +Ideeli/trash
 
 source $alias_file                                                # required for functionality
 source ~/.mutt/gmail
@@ -86,13 +86,13 @@ source `FILE=$HOME/.mutt/sidebar; mutt -v | grep -Fq sidebar || FILE=/dev/null; 
 
 # override with account specific folder-hooks
 folder-hook GMail/*      source ~/.mutt/gmail
-folder-hook GMX/*        source ~/.mutt/gmx
+folder-hook Ideeli/*     source ~/.mutt/ideeli
 
 # collapse all thread in ML folders
 folder-hook GMail/(arch_lists|xmonad_list|web_devel|yesod) "exec collapse-all"
 
 # alternate "me"s
-alternates (pbrisbin@(gmail|gmx).com|.*@pbrisbin.com)
+alternates (pbrisbin@gmail.com|.*@pbrisbin.com)
 
 # these just give me headaches
 bind index,pager \# noop
