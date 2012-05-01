@@ -31,7 +31,7 @@ remotepass = password
 realdelete = no
 postsynchook = notmuch new
 maxconnections = 3
-nametrans = nt_remote_local
+nametrans = nt_remote
 
 [Repository Ideeli-Remote]
 type = Gmail
@@ -39,6 +39,7 @@ remoteuser = you@ideeli.com
 remotepass = password
 realdelete = no
 maxconnections = 3
-nametrans = nt_remote_local
+nametrans = nt_remote
+folderfilter = exclude([ 'Foo', 'Bar' ])
 
 # vim: ft=cfg
