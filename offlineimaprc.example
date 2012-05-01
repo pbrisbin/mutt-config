@@ -1,45 +1,44 @@
-# An example offlineimaprc which syncs two accounts. one synced to
-# ~/Mail/GMail and the other synced to ~/Mail/Ideeli
+# Note: requires ./nametrans.py
+
 [general]
 ui = ttyui
-accounts = GMail,Ideeli
+accounts = Gmail,Ideeli
+maxsyncaccounts = 2
+pythonfile = ~/.mutt/nametrans.py
 
-[Account GMail]
+[Account Gmail]
 localrepository = Gmail-Local
 remoterepository = Gmail-Remote
-maxsyncaccounts = 3
-maxconnections = 3
 
 [Account Ideeli]
 localrepository = Ideeli-Local
 remoterepository = Ideeli-Remote
-maxsyncaccounts = 3
-maxconnections = 3
 
 [Repository Gmail-Local]
 type = Maildir
-localfolders = ~/Mail/GMail
+localfolders = ~/Mail/Gmail
+nametrans = nt_local_remote
 
 [Repository Ideeli-Local]
 type = Maildir
 localfolders = ~/Mail/Ideeli
+nametrans = nt_local_remote
 
 [Repository Gmail-Remote]
 type = Gmail
-remoteuser = <you@gmail.com>
-remotepass = <password>
+remoteuser = you@gmail.com
+remotepass = password
 realdelete = no
-
-# "[Gmail]/All Mail" --> all_mail
-nametrans = lambda folder: re.sub('^inbox$', 'INBOX', re.sub(' +', '_', re.sub(r'.*/(.*)$', r'\1', folder).lower()))
+postsynchook = notmuch new
+maxconnections = 3
+nametrans = nt_remote_local
 
 [Repository Ideeli-Remote]
 type = Gmail
-remoteuser = <you@ideeli.com>
-remotepass = <password>
+remoteuser = you@ideeli.com
+remotepass = password
 realdelete = no
-
-# "[Gmail]/All Mail" --> all_mail
-nametrans = lambda folder: re.sub('^inbox$', 'INBOX', re.sub(' +', '_', re.sub(r'.*/(.*)$', r'\1', folder).lower()))
+maxconnections = 3
+nametrans = nt_remote_local
 
 # vim: ft=cfg
