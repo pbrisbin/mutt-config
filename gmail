@@ -2,12 +2,12 @@ color status green default
 
   set from      = "pbrisbin@gmail.com"
   set sendmail  = "/usr/bin/msmtp -a gmail"
-  set mbox      = "+GMail/all_mail"
+  set mbox      = "+Gmail/all_mail"
 unset record
-  set postponed = "+GMail/drafts"
+  set postponed = "+Gmail/drafts"
 
 macro index ,c "<change-folder>+Ideeli/INBOX<return>" "change accounts"
-macro index D "<save-message>+GMail/trash<enter>" "move message to the trash"
-macro index S "<save-message>+GMail/spam<enter>"  "mark message as spam"
+macro index D "<save-message>+Gmail/trash<enter>" "move message to the trash"
+macro index S "<save-message>+Gmail/spam<enter>"  "mark message as spam"
 
 # vim: ft=muttrc
