@@ -1,10 +1,9 @@
 #!/bin/bash
+read -r pid < ~/.offlineimap/pid
 
-# read the pid of any still-running instance
-read -r pid < <(pgrep offlineimap)
+if ps $pid &>/dev/null; then
+  echo "offlineimap ($pid): another instance running." >&2
+  exit 1
+fi
 
-# need be, kill it
-[[ -n "$pid" ]] && kill -9 $pid
-
-# (re)sync
-offlineimap -o -u quiet &>/dev/null &
+exec offlineimap -o -u quiet
