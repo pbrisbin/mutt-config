@@ -17,12 +17,12 @@ remoterepository = Ideeli-Remote
 [Repository Gmail-Local]
 type = Maildir
 localfolders = ~/Mail/Gmail
-nametrans = nt_local_remote
+nametrans = nt_local
 
 [Repository Ideeli-Local]
 type = Maildir
 localfolders = ~/Mail/Ideeli
-nametrans = nt_local_remote
+nametrans = nt_local
 
 [Repository Gmail-Remote]
 type = Gmail
