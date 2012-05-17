@@ -13,7 +13,6 @@
   set query_command       = "mail-query '%s' ~/Mail/Gmail/INBOX"  # query existing mails
   set print_command       = "enscript -p - | psselect -r | lp"    # print email in reverse page order
 
-
 # maildir settings
   set mbox_type           = Maildir                               # mailbox type
   set folder              = ~/Mail                                # mailbox location
@@ -48,6 +47,7 @@ alternative_order text/plain text/enriched text/html              # but save it 
 # formats and regexps
   set alias_format        = "%4n %t %-20a %r"
   set date_format         = "%m/%d/%y at %I:%M%P"
+  set forward_format      = "Fwd: %s"                             # format for subject when forwarding
   set index_format        = "%3C %Z %[!%m/%d] %-17.17F %s"
   set quote_regexp        = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
   set reply_regexp        = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
@@ -57,7 +57,6 @@ alternative_order text/plain text/enriched text/html              # but save it 
   set askcc                                                       # always ask for CC:
   set edit_headers                                                # show headers when composing
   set fast_reply                                                  # skip to compose when replying
-  set forward_format      = "Fwd: %s"                             # format for subject when forwarding
   set forward_quote                                               # include message in forwards
   set include                                                     # include message in replies
   set realname            = "Patrick Brisbin"                     # who am i?
@@ -69,20 +68,15 @@ ignore *                                                          # ignore all h
 unignore from: to: cc: date: subject:                             # show only these
 hdr_order from: to: cc: date: subject:                            # and in this order
 
-# lists and boxes
+# lists
 subscribe arch-announce arch-dev-public aur-general xmonad arch-haskell web-devel yesod
-mailboxes +--Gmail------------- +Gmail/INBOX +Gmail/all_mail +Gmail/arch_lists +Gmail/xmonad_list +Gmail/web_devel +Gmail/yesod +Gmail/sent_mail +Gmail/notes +Gmail/drafts +Gmail/trash 
-mailboxes +--Ideeli------------ +Ideeli/INBOX +Ideeli/all_mail +Ideeli/sent_mail +Ideeli/drafts +Ideeli/trash
+
+# list of folders to notify of new mail
+mailboxes +Gmail/INBOX +Ideeli/INBOX
 
 source $alias_file                                                # required for functionality
-source ~/.mutt/gmail
-
-# uncomment to conditionally source 256colors
-#source `FILE=$HOME/.mutt/colors; [[ $TERM =~ 256 ]] && FILE=$HOME/.mutt/256colors; echo $FILE`
 source ~/.mutt/colors
-
-# source sidebar options if mutt -v says that patch is present
-source `FILE=$HOME/.mutt/sidebar; mutt -v | grep -Fq sidebar || FILE=/dev/null; echo $FILE`
+source ~/.mutt/gmail
 
 # override with account specific folder-hooks
 folder-hook Gmail/*      source ~/.mutt/gmail
@@ -92,7 +86,7 @@ folder-hook Ideeli/*     source ~/.mutt/ideeli
 folder-hook Gmail/(arch_lists|xmonad_list|web_devel|yesod) "exec collapse-all"
 
 # alternate "me"s
-alternates (pbrisbin@gmail.com|.*@pbrisbin.com)
+alternates .*@pbrisbin\.com
 
 # these just give me headaches
 bind index,pager \# noop
@@ -103,8 +97,6 @@ bind index i        noop
 bind pager i       exit
 bind pager q       toggle-quoted
 bind pager /       search
-bind pager <up>    previous-line
-bind pager <down>  next-line
 bind pager k       previous-line
 bind pager j       next-line
 bind pager gg      top
@@ -126,10 +118,7 @@ macro index ,R "<collapse-all><tag-pattern>all<return><tag-prefix><clear-flag>N<
 macro index ,v "<collapse-thread>" "collapse/uncollapse thread"
 macro index ,V "<collapse-all>"    "collapse/uncollapse all threads"
 
-#macro index ,s \
-  #"<enter-command>set my_cmd = \`$HOME/.mutt/msearch\`<return><enter-command>push \$my_cmd<return>" \
-  #"search mail (using mairix)"
-
+# search via notmuch
 macro index ,s \
   "<enter-command>unset wait_key<enter><shell-escape>mutt-notmuch --prompt search<enter><change-folder-readonly>~/.cache/mutt_results<enter>" \
   "search mail (using notmuch)"
