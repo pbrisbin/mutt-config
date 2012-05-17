@@ -3,7 +3,7 @@ read -r pid < ~/.offlineimap/pid
 
 if ps $pid &>/dev/null; then
   echo "offlineimap ($pid): another instance running." >&2
-  exit 1
+  kill -9 $pid
 fi
 
-exec offlineimap -o -u quiet
+offlineimap -o -u quiet &
