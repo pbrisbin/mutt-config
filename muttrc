@@ -10,7 +10,6 @@
   set tmpdir              = ~/.mutt/temp                          # where to keep temp files
   set editor              = "vim +:silent+?^$"                    # use vim and skip to last blank line
   set ispell              = "aspell -e -c"                        # use aspell as ispell
-  set query_command       = "mail-query '%s' ~/Mail/Gmail/INBOX"  # query existing mails
   set print_command       = "enscript -p - | psselect -r | lp"    # print email in reverse page order
 
 # maildir settings
