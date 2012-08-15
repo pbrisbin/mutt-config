@@ -1,6 +1,8 @@
 # Mutt
 
-This is my `~/.mutt`.
+This is my `~/.mutt`. Requires [mutt-kz][].
+
+[mutt-kz]: https://aur.archlinux.org/packages.php?ID=57156
 
 ## Offlineimap
 
@@ -54,14 +56,7 @@ It is available in its own [repo][].
 
 ## Notmuch
 
-Notmuch is used to search mail. Install [it][] and use [mutt-kz][] which
-includes notmuch support along with other fixes. Search with `,s`.
-
-[it]:      https://aur.archlinux.org/packages.php?ID=36289
-[mutt-kz]: https://aur.archlinux.org/packages.php?ID=57156
-
-If you'd rather not do that, comment or remove the notmuch related
-configuration from muttrc.
+Notmuch support is fully integrated in mutt-kz. Search with `,s`.
 
 ## Mutt
 
