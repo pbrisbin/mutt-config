@@ -54,6 +54,8 @@ It is available in its own [repo][].
 
 ## Notmuch
 
+*Note: this functionality has been temporarily removed.*
+
 Notmuch is used to search mail. Install [it][] and the [helper][] from 
 the AUR (if on Arch) and follow the steps to configure it. Search with 
 `,s`.

@@ -117,10 +117,10 @@ macro index ,R "<collapse-all><tag-pattern>all<return><tag-prefix><clear-flag>N<
 macro index ,v "<collapse-thread>" "collapse/uncollapse thread"
 macro index ,V "<collapse-all>"    "collapse/uncollapse all threads"
 
-# search via notmuch
-macro index ,s \
-  "<enter-command>unset wait_key<enter><shell-escape>mutt-notmuch --prompt search<enter><change-folder-readonly>~/.cache/mutt_results<enter>" \
-  "search mail (using notmuch)"
+# search via notmuch NOTE: this no longer works.
+#macro index ,s \
+  #"<enter-command>unset wait_key<enter><shell-escape>mutt-notmuch --prompt search<enter><change-folder-readonly>~/.cache/mutt_results<enter>" \
+  #"search mail (using notmuch)"
 
 # cc myself when replying to an ML.
 #
