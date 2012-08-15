@@ -2,9 +2,6 @@
 
 # directories and commands
   set alias_file          = ~/.mutt/aliases                       # alias file
-  set certificate_file    = ~/.mutt/certificates                  # where to store certs
-  set header_cache        = ~/.mutt/cache/headers                 # where to store headers
-  set message_cachedir    = ~/.mutt/cache/bodies                  # where to store bodies
   set mailcap_path        = ~/.mutt/mailcap                       # entrys for filetypes
   set signature           = ~/.mutt/sig                           # my signature file
   set tmpdir              = ~/.mutt/temp                          # where to keep temp files
@@ -16,6 +13,7 @@
   set mbox_type           = Maildir                               # mailbox type
   set folder              = ~/Mail                                # mailbox location
   set spoolfile           = "+Gmail/INBOX"                        # Gmail is default inbox
+  set nm_default_uri      = "notmuch:///home/patrick/Mail"        # mutt-kz required
 
 # main options
   set beep_new                                                    # terminal bell on new message
@@ -117,10 +115,8 @@ macro index ,R "<collapse-all><tag-pattern>all<return><tag-prefix><clear-flag>N<
 macro index ,v "<collapse-thread>" "collapse/uncollapse thread"
 macro index ,V "<collapse-all>"    "collapse/uncollapse all threads"
 
-# search via notmuch NOTE: this no longer works.
-#macro index ,s \
-  #"<enter-command>unset wait_key<enter><shell-escape>mutt-notmuch --prompt search<enter><change-folder-readonly>~/.cache/mutt_results<enter>" \
-  #"search mail (using notmuch)"
+# search via notmuch
+bind index ,s vfolder-from-query
 
 # cc myself when replying to an ML.
 #

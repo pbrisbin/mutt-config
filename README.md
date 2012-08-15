@@ -54,14 +54,14 @@ It is available in its own [repo][].
 
 ## Notmuch
 
-*Note: this functionality has been temporarily removed.*
+Notmuch is used to search mail. Install [it][] and use [mutt-kz][] which
+includes notmuch support along with other fixes. Search with `,s`.
 
-Notmuch is used to search mail. Install [it][] and the [helper][] from 
-the AUR (if on Arch) and follow the steps to configure it. Search with 
-`,s`.
+[it]:      https://aur.archlinux.org/packages.php?ID=36289
+[mutt-kz]: https://aur.archlinux.org/packages.php?ID=57156
 
-[it]:     https://aur.archlinux.org/packages.php?ID=36289
-[helper]: https://aur.archlinux.org/packages.php?ID=49071
+If you'd rather not do that, comment or remove the notmuch related
+configuration from muttrc.
 
 ## Mutt
 
