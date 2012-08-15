@@ -13,7 +13,7 @@
   set mbox_type           = Maildir                               # mailbox type
   set folder              = ~/Mail                                # mailbox location
   set spoolfile           = "+Gmail/INBOX"                        # Gmail is default inbox
-  set nm_default_uri      = "notmuch:///home/patrick/Mail"        # mutt-kz required
+  set nm_default_uri      = "notmuch:///home/patrick/Mail"        # notmuch uri
 
 # main options
   set beep_new                                                    # terminal bell on new message
@@ -28,6 +28,9 @@ unset mark_old                                                    # read/new is 
   set pager_stop                                                  # don't go to next message automatically
   set pipe_decode                                                 # strip headers and eval mimes when piping
   set reverse_alias                                               # show names from alias file in index
+  set sidebar_visible     = yes
+  set sidebar_width       = 35
+  set sidebar_delim       = '│'
   set sort                = threads                               # like gmail
   set sort_aux            = reverse-last-date-received            # like gmail
 unset sort_re                                                     # always thread
@@ -48,7 +51,7 @@ alternative_order text/plain text/enriched text/html              # but save it 
   set index_format        = "%3C %Z %[!%m/%d] %-17.17F %s"
   set quote_regexp        = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
   set reply_regexp        = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
-  set status_format       = "-%r- %v ───────────/ %f %m%?n? [+%n]?%?d? [-%d]?%?t? [*%t]? /%?p?───/ %p waiting to send /?─%>─(%P)───"
+  set status_format       = "-%r- %v ────────────────┴────/ %f %m%?n? [+%n]?%?d? [-%d]?%?t? [*%t]? /%?p?───/ %p waiting to send /?─%>─(%P)───"
 
 # composing mail
   set askcc                                                       # always ask for CC:
@@ -68,8 +71,22 @@ hdr_order from: to: cc: date: subject:                            # and in this 
 # lists
 subscribe arch-announce arch-dev-public aur-general xmonad arch-haskell web-devel yesod
 
-# list of folders to notify of new mail
-mailboxes +Gmail/INBOX +Ideeli/INBOX
+# this list defines the formatting of the sidebar entries
+mailboxes +Gmail             \
+          +Gmail/INBOX       \
+          +Gmail/important   \
+          +Gmail/recruiting  \
+          +Gmail/server      \
+          +Gmail/all_mail    \
+          +Gmail/sent_mail   \
+          +Gmail/arch_lists  \
+          +Gmail/web_devel   \
+          +Gmail/xmonad_list \
+          +Gmail/yesod       \
+          +Ideeli            \
+          +Ideeli/INBOX      \
+          +Ideeli/important  \
+          +Ideeli/sent_mail  \
 
 source $alias_file                                                # required for functionality
 source ~/.mutt/colors
@@ -91,20 +108,23 @@ bind index,pager \& noop
 bind index i        noop
 
 # bindings -- very vim-like
-bind pager i       exit
-bind pager q       toggle-quoted
-bind pager /       search
-bind pager k       previous-line
-bind pager j       next-line
-bind pager gg      top
-bind pager G       bottom
-bind index gg      first-entry
-bind index G       last-entry
-bind pager K       previous-undeleted
-bind pager J       next-undeleted
-bind index K       previous-unread
-bind index J       next-unread
-bind index,pager R group-reply
+bind pager i         exit
+bind pager q         toggle-quoted
+bind pager /         search
+bind pager k         previous-line
+bind pager j         next-line
+bind pager gg        top
+bind pager G         bottom
+bind index gg        first-entry
+bind index G         last-entry
+bind pager K         previous-undeleted
+bind pager J         next-undeleted
+bind index K         previous-unread
+bind index J         next-unread
+bind index,pager \CJ sidebar-next
+bind index,pager \CK sidebar-prev
+bind index,pager \CL sidebar-open
+bind index,pager R   group-reply
 
 # macros
 macro index ,i "<change-folder>!<return>" "go to inbox"
