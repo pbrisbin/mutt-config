@@ -74,7 +74,6 @@ subscribe arch-announce arch-dev-public aur-general xmonad arch-haskell web-deve
 # this list defines the formatting of the sidebar entries
 mailboxes +Gmail             \
           +Gmail/INBOX       \
-          +Gmail/important   \
           +Gmail/recruiting  \
           +Gmail/server      \
           +Gmail/all_mail    \
@@ -85,7 +84,6 @@ mailboxes +Gmail             \
           +Gmail/yesod       \
           +Ideeli            \
           +Ideeli/INBOX      \
-          +Ideeli/important  \
           +Ideeli/sent_mail  \
 
 source $alias_file                                                # required for functionality
@@ -107,24 +105,24 @@ bind index,pager \# noop
 bind index,pager \& noop
 bind index i        noop
 
-# bindings -- very vim-like
+# other bindings
 bind pager i       exit
 bind pager q       toggle-quoted
 bind pager /       search
-bind pager k       previous-line
+
 bind pager j       next-line
+bind pager k       previous-line
 bind pager gg      top
 bind pager G       bottom
+
 bind index gg      first-entry
 bind index G       last-entry
-bind pager K       previous-undeleted
-bind pager J       next-undeleted
-bind index K       previous-unread
-bind index J       next-unread
-bind index \CN     sidebar-next
-bind index \CP     sidebar-prev
-bind index \CO     sidebar-open
+bind index U       next-unread
+
 bind index,pager R group-reply
+bind index,pager J sidebar-next
+bind index,pager K sidebar-prev
+bind index,pager O sidebar-open
 
 # macros
 macro index ,i "<change-folder>!<return>" "go to inbox"
