@@ -32,7 +32,7 @@ realdelete = no
 postsynchook = notmuch new
 maxconnections = 3
 nametrans = nt_remote
-cert_fingerprint = f3043dd689a2e7dddfbef82703a6c65ea9b634c1
+cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
 
 [Repository Ideeli-Remote]
 type = Gmail
@@ -42,6 +42,6 @@ realdelete = no
 maxconnections = 3
 nametrans = nt_remote
 folderfilter = exclude([ 'Foo', 'Bar' ])
-cert_fingerprint = f3043dd689a2e7dddfbef82703a6c65ea9b634c1
+cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
 
 # vim: ft=cfg
