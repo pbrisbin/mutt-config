@@ -31,7 +31,7 @@ function), or simply add them to `mapping`.
 I don't trust Offlineimap as a daemon, so I just manually sync every 3 
 minutes via [f]cron.
 
-~~~ 
+~~~
 */3 * * * * /home/you/.mutt/mailrun
 ~~~
 
@@ -53,6 +53,17 @@ tab completion. Given a small enough mailbox, it's usably fast.
 It is available in its own [repo][].
 
 [repo]: https://github.com/pbrisbin/mail-query
+
+## Gmail2mutt
+
+This simple script fetches your Gmail contacts using `python-gdata` and 
+outputs them in mutt alias format.
+
+~~~
+$ ./gmail2mutt.py > aliases
+~~~
+
+It uses the environment variables `GMAIL_USER` and `GMAIL_PASS`.
 
 ## Notmuch
 
