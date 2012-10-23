@@ -1,4 +1,4 @@
-# Note: requires ./nametrans.py
+# Note: requires ../nametrans.py
 
 [general]
 ui = ttyui
@@ -32,6 +32,9 @@ realdelete = no
 postsynchook = notmuch new
 maxconnections = 3
 nametrans = nt_remote
+
+# This changes occasionally, offlineimap will give you the new value in
+# the error message reported.
 cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
 
 [Repository Ideeli-Remote]
