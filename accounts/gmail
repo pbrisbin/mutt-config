@@ -1,4 +1,5 @@
-color status green default
+color status  green default
+color sidebar green default
 
   set from      = "pbrisbin@gmail.com"
   set sendmail  = "/usr/bin/msmtp -a gmail"
@@ -11,5 +12,10 @@ unset record
 macro index ,c "<change-folder>+Ideeli/INBOX<return>" "change accounts"
 macro index D "<save-message>+Gmail/trash<enter>" "move message to the trash"
 macro index S "<save-message>+Gmail/spam<enter>"  "mark message as spam"
+
+# cc myself when replying to an ML. note that you can't use `:q!` to
+# abort the message. use `:wq` and abort from the compose menu
+unhook send-hook
+send-hook "~u" "push '<edit-cc>,pbrisbin@gmail.com<return>'"
 
 # vim: ft=muttrc

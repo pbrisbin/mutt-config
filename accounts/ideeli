@@ -1,4 +1,5 @@
-color status cyan default
+color status  cyan default
+color sidebar cyan default
 
   set from      = "pbrisbin@ideeli.com"
   set sendmail  = "/usr/bin/msmtp -a ideeli"

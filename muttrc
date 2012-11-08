@@ -1,74 +1,72 @@
-# ~/.mutt/muttrc
+# vim: ft=muttrc
 
-# directories and commands
-  set alias_file          = ~/.mutt/aliases                       # alias file
-  set mailcap_path        = ~/.mutt/mailcap                       # entrys for filetypes
-  set tmpdir              = ~/.mutt/temp                          # where to keep temp files
-  set editor              = "vim +:silent+?^$"                    # use vim and skip to last blank line
-  set ispell              = "aspell -e -c"                        # use aspell as ispell
-  set print_command       = "enscript -p - | psselect -r | lp"    # print email in reverse page order
+  set alias_file        = ~/.mutt/aliases
+  set alias_format      = "%4n %t %-20a %r"
+  set askcc
+  set beep_new
+unset confirmappend
+  set date_format       = "%m/%d/%y at %I:%M%P"
+  set delete
+  set edit_headers
+  set editor            = "vim +:silent+?^$"
+  set fast_reply
+  set folder            = ~/Mail
+  set forward_format    = "Fwd: %s"
+  set forward_quote
+  set include
+  set index_format      = "%3C %Z %[!%m/%d] %-17.17F %s"
+  set ispell            = "aspell -e -c"
+  set mail_check        = 0
+  set mailcap_path      = ~/.mutt/mailcap
+unset mark_old
+unset markers
+  set mbox_type         = Maildir
+  set menu_scroll
+  set pager_context     = 5
+  set pager_index_lines = 10
+  set pager_stop
+  set pipe_decode
+  set print_command     = "enscript -p - | psselect -r | lp"
+  set quote_regexp      = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+  set realname          = "Patrick Brisbin"
+  set reply_regexp      = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+  set reply_to
+  set reverse_alias
+  set reverse_name
+  set sort              = threads
+  set sort_aux          = reverse-last-date-received
+unset sort_re
+  set spoolfile         = "+Gmail/INBOX"
+  set thorough_search
+  set thread_received
+  set tilde
+  set timeout           = 3
+  set tmpdir            = ~/.mutt/temp
+unset wait_key
 
-# maildir settings
-  set mbox_type           = Maildir                               # mailbox type
-  set folder              = ~/Mail                                # mailbox location
-  set spoolfile           = "+Gmail/INBOX"                        # Gmail is default inbox
-  set nm_default_uri      = "notmuch:///home/patrick/Mail"        # notmuch uri
+# non-standard
+  set nm_default_uri    = "notmuch:///home/patrick/Mail"
+  set sidebar_delim     = '│'
+  set sidebar_visible   = yes
+  set sidebar_width     = 35
 
-# main options
-  set beep_new                                                    # terminal bell on new message
-unset confirmappend                                               # don't ask, just do
-  set delete                                                      # don't ask, just do
-  set mail_check          = 0                                     # minimum time between scans
-unset markers                                                     # no ugly plus signs
-unset mark_old                                                    # read/new is good enough for me
-  set menu_scroll                                                 # scroll in menus
-  set pager_index_lines   = 10                                    # number of index lines to show
-  set pager_context       = 5                                     # number of context lines to show
-  set pager_stop                                                  # don't go to next message automatically
-  set pipe_decode                                                 # strip headers and eval mimes when piping
-  set reverse_alias                                               # show names from alias file in index
-  set sidebar_visible     = yes
-  set sidebar_width       = 35
-  set sidebar_delim       = '│'
-  set sort                = threads                               # like gmail
-  set sort_aux            = reverse-last-date-received            # like gmail
-unset sort_re                                                     # always thread
-  set thorough_search                                             # strip headers and eval mimes before searching
-  set thread_received                                             # sort threads by date received, not sent
-  set tilde                                                       # show tildes like in vim
-  set timeout             = 3                                     # idle time before scanning
-unset wait_key                                                    # don't show "Press any key to continue"
+alternates .*@pbrisbin\.com
 
-# enriched messages
-auto_view text/html                                               # view html automatically
-alternative_order text/plain text/enriched text/html              # but save it for last
+auto_view text/html
+alternative_order text/plain text/enriched text/html
 
-# formats and regexps
-  set alias_format        = "%4n %t %-20a %r"
-  set date_format         = "%m/%d/%y at %I:%M%P"
-  set forward_format      = "Fwd: %s"                             # format for subject when forwarding
-  set index_format        = "%3C %Z %[!%m/%d] %-17.17F %s"
-  set quote_regexp        = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
-  set reply_regexp        = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
-  set status_format       = "-%r- %v ────────────────┴────/ %f %m%?n? [+%n]?%?d? [-%d]?%?t? [*%t]? /%?p?───/ %p waiting to send /?─%>─(%P)───"
+folder-hook Gmail/*  source ~/.mutt/accounts/gmail
+folder-hook Ideeli/* source ~/.mutt/accounts/ideeli
 
-# composing mail
-  set askcc                                                       # always ask for CC:
-  set edit_headers                                                # show headers when composing
-  set fast_reply                                                  # skip to compose when replying
-  set forward_quote                                               # include message in forwards
-  set include                                                     # include message in replies
-  set realname            = "Patrick Brisbin"                     # who am i?
-  set reply_to                                                    # reply to Reply-to: field, not From:
-  set reverse_name                                                # reply as who it was sent to (see alternates)
+# collapse all threads in ML folders
+folder-hook Gmail/(arch_lists|xmonad_list|web_devel|yesod) "exec collapse-all"
 
-# headers to show
-ignore *                                                          # ignore all headers
-unignore from: to: cc: date: subject:                             # show only these
-hdr_order from: to: cc: date: subject:                            # and in this order
+ignore *
+unignore from: to: cc: date: subject:
+hdr_order from: to: cc: date: subject:
 
-# lists
-subscribe arch-announce arch-dev-public aur-general xmonad arch-haskell web-devel yesod
+subscribe arch-announce arch-dev-public arch-haskell aur-general \
+          web-devel xmonad yesod
 
 # this list defines the formatting of the sidebar entries
 mailboxes +Gmail             \
@@ -85,45 +83,26 @@ mailboxes +Gmail             \
           +Ideeli/INBOX      \
           +Ideeli/sent_mail  \
 
-source $alias_file                                                # required for functionality
-source ~/.mutt/colors
-source ~/.mutt/accounts/gmail
-
-# override with account specific folder-hooks
-folder-hook Gmail/*      source ~/.mutt/accounts/gmail
-folder-hook Ideeli/*     source ~/.mutt/accounts/ideeli
-
-# collapse all thread in ML folders
-folder-hook Gmail/(arch_lists|xmonad_list|web_devel|yesod) "exec collapse-all"
-
-# alternate "me"s
-alternates .*@pbrisbin\.com
-
-# these just give me headaches
+bind index i  noop
+bind index gg first-entry
+bind index G  last-entry
+bind pager i  exit
+bind pager q  toggle-quoted
+bind pager /  search
+bind pager j  next-line
+bind pager k  previous-line
+bind pager gg top
+bind pager G  bottom
 bind index,pager \# noop
 bind index,pager \& noop
-bind index i        noop
+bind index,pager R  group-reply
 
-# other bindings
-bind pager i       exit
-bind pager q       toggle-quoted
-bind pager /       search
-
-bind pager j       next-line
-bind pager k       previous-line
-bind pager gg      top
-bind pager G       bottom
-
-bind index gg      first-entry
-bind index G       last-entry
-bind index U       next-unread
-
-bind index,pager R group-reply
+# non-standard
+bind index ,s vfolder-from-query
 bind index,pager J sidebar-next
 bind index,pager K sidebar-prev
 bind index,pager O sidebar-open
 
-# macros
 macro index ,i "<change-folder>!<return>" "go to inbox"
 macro index ,p "<pipe-message>cat > ~/" "save message as"
 macro index ,z "<shell-escape>offlineimap -q -o<return>" "sync IMAP"
@@ -132,14 +111,6 @@ macro index ,R "<collapse-all><tag-pattern>all<return><tag-prefix><clear-flag>N<
 macro index ,v "<collapse-thread>" "collapse/uncollapse thread"
 macro index ,V "<collapse-all>"    "collapse/uncollapse all threads"
 
-# search via notmuch
-bind index ,s vfolder-from-query
-
-# cc myself when replying to an ML.
-#
-# note: with this, you can't use `:q!` mid-compose to abort the message.
-# instead, you should use `:wq` and abort from the compose menu
-unhook send-hook
-send-hook "~u" "push '<edit-cc>,pbrisbin@gmail.com<return>'"
-
-# vim: ft=muttrc
+source $alias_file
+source ~/.mutt/colors
+source ~/.mutt/accounts/gmail
