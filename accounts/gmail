@@ -6,6 +6,7 @@ color status green default
 unset record
   set postponed     = "+Gmail/drafts"
   set query_command = "mail-query '%s' ~/Mail/Gmail/INBOX"
+  set signature     = ~/.mutt/accounts/gmail_sig
 
 macro index ,c "<change-folder>+Ideeli/INBOX<return>" "change accounts"
 macro index D "<save-message>+Gmail/trash<enter>" "move message to the trash"
