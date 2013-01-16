@@ -6,6 +6,14 @@ accounts = Gmail,Ideeli
 maxsyncaccounts = 2
 pythonfile = ~/.mutt/nametrans.py
 
+[mbnames]
+enabled = yes
+filename = ~/.mutt/mailboxes
+header = "mailboxes "
+peritem = "+%(accountname)s/%(foldername)s"
+sep = " "
+footer = "\n"
+
 [Account Gmail]
 localrepository = Gmail-Local
 remoterepository = Gmail-Remote

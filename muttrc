@@ -83,4 +83,5 @@ macro index ,V "<collapse-all>"    "collapse/uncollapse all threads"
 
 source $alias_file
 source ~/.mutt/colors
+source ~/.mutt/mailboxes
 source ~/.mutt/accounts/gmail

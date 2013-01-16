@@ -2,4 +2,5 @@ certificates
 cache/*
 temp/*
 aliases
+mailboxes
 *.bak
