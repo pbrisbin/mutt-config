@@ -41,9 +41,8 @@ postsynchook = notmuch new
 maxconnections = 3
 nametrans = nt_remote
 
-# This changes occasionally, offlineimap will give you the new value in
-# the error message reported.
-cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
+# needed since v6.5.4
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 
 [Repository Ideeli-Remote]
 type = Gmail
@@ -53,6 +52,6 @@ realdelete = no
 maxconnections = 3
 nametrans = nt_remote
 folderfilter = exclude([ 'Foo', 'Bar' ])
-cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 
 # vim: ft=cfg
