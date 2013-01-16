@@ -52,9 +52,6 @@ alternative_order text/plain text/enriched text/html
 folder-hook Gmail/*  source ~/.mutt/accounts/gmail
 folder-hook Ideeli/* source ~/.mutt/accounts/ideeli
 
-# collapse all threads in ML folders
-folder-hook Gmail/(arch_lists|xmonad_list|web_devel|yesod) "exec collapse-all"
-
 ignore *
 unignore from: to: cc: date: subject:
 hdr_order from: to: cc: date: subject:
