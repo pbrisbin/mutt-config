@@ -44,12 +44,6 @@ unset sort_re
   set tmpdir            = ~/.mutt/temp
 unset wait_key
 
-# non-standard
-  set nm_default_uri    = "notmuch:///home/patrick/Mail"
-  set sidebar_delim     = '│'
-  set sidebar_visible   = yes
-  set sidebar_width     = 35
-
 alternates .*@pbrisbin\.com
 
 auto_view text/html
@@ -66,22 +60,7 @@ unignore from: to: cc: date: subject:
 hdr_order from: to: cc: date: subject:
 
 subscribe arch-announce arch-dev-public arch-haskell aur-general \
-          web-devel xmonad yesod
-
-# this list defines the formatting of the sidebar entries
-mailboxes +Gmail             \
-          +Gmail/INBOX       \
-          +Gmail/recruiting  \
-          +Gmail/server      \
-          +Gmail/all_mail    \
-          +Gmail/sent_mail   \
-          +Gmail/arch_lists  \
-          +Gmail/web_devel   \
-          +Gmail/xmonad_list \
-          +Gmail/yesod       \
-          +Ideeli            \
-          +Ideeli/INBOX      \
-          +Ideeli/sent_mail  \
+          rubyparley web-devel xmonad yesod
 
 bind index i  noop
 bind index gg first-entry
@@ -96,12 +75,6 @@ bind pager G  bottom
 bind index,pager \# noop
 bind index,pager \& noop
 bind index,pager R  group-reply
-
-# non-standard
-bind index ,s vfolder-from-query
-bind index,pager J sidebar-next
-bind index,pager K sidebar-prev
-bind index,pager O sidebar-open
 
 macro index ,i "<change-folder>!<return>" "go to inbox"
 macro index ,p "<pipe-message>cat > ~/" "save message as"

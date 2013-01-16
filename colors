@@ -7,8 +7,6 @@
   color tree        blue          default
   color error       brightred     default
   color message     brightyellow  default
-  color sidebar     green         default
-  color sidebar_new brightyellow  default
 
 #
 # message states

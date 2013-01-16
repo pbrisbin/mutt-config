@@ -1,6 +1,3 @@
-color status  cyan default
-color sidebar cyan default
-
   set from      = "pbrisbin@ideeli.com"
   set sendmail  = "/usr/bin/msmtp -a ideeli"
   set mbox      = "+Ideeli/all_mail"
@@ -8,6 +5,8 @@ unset record
   set postponed     = "+Ideeli/drafts"
   set query_command = "mail-query '%s' ~/Mail/Ideeli/INBOX"
   set signature     = ~/.mutt/accounts/ideeli_sig
+
+color status cyan default
 
 macro index ,c "<change-folder>+Gmail/INBOX<return>" "change accounts"
 macro index D "<save-message>+Ideeli/trash<enter>" "move message to the trash"

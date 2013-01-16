@@ -1,6 +1,3 @@
-color status  green default
-color sidebar green default
-
   set from      = "pbrisbin@gmail.com"
   set sendmail  = "/usr/bin/msmtp -a gmail"
   set mbox      = "+Gmail/all_mail"
@@ -8,6 +5,8 @@ unset record
   set postponed     = "+Gmail/drafts"
   set query_command = "mail-query '%s' ~/Mail/Gmail/INBOX"
   set signature     = ~/.mutt/accounts/gmail_sig
+
+color status green default
 
 macro index ,c "<change-folder>+Ideeli/INBOX<return>" "change accounts"
 macro index D "<save-message>+Gmail/trash<enter>" "move message to the trash"

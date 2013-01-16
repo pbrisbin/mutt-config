@@ -1,8 +1,6 @@
 # Mutt
 
-This is my `~/.mutt`. Requires [mutt-kz][].
-
-[mutt-kz]: https://aur.archlinux.org/packages.php?ID=57156
+This is my `~/.mutt`.
 
 ## Offlineimap
 
@@ -64,10 +62,6 @@ $ ./gmail2mutt.py > aliases
 ~~~
 
 It uses the environment variables `GMAIL_USER` and `GMAIL_PASS`.
-
-## Notmuch
-
-Notmuch support is fully integrated in mutt-kz. Search with `,s`.
 
 ## Mutt
 
