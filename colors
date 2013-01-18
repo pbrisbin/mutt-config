@@ -20,7 +20,7 @@ uncolor index "~P"
 
 # threads containing new messages
 uncolor index "~(~N)"
-  color index brightcyan default "~(~N)"
+  color index brightblue default "~(~N)"
 
 # new messages themselves
 uncolor index "~N"
