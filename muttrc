@@ -13,6 +13,7 @@ unset confirmappend
   set folder            = ~/Mail
   set forward_format    = "Fwd: %s"
   set forward_quote
+  set header_cache      = ~/.mutt/cache
   set include
   set index_format      = "%3C %Z %[!%m/%d] %-17.17F %s"
   set ispell            = "aspell -e -c"
