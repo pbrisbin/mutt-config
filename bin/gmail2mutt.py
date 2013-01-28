@@ -8,7 +8,9 @@
 ###
 
 import os
+import sys
 import re
+
 import gdata.contacts
 import gdata.contacts.service
 
@@ -68,15 +70,13 @@ def alias_formatter(name, emails):
 
 
 if __name__ == '__main__':
-    env = os.environ
+    email    = os.environ.get('GMAIL_USER')
+    password = os.environ.get('GMAIL_PASS')
 
-    try:
-        contacts = query_contacts(env['GMAIL_USER'], env['GMAIL_PASS'])
-    except:
-        sys.stderr.write("Unable to query contacts\n")
-        sys.stderr.write("Are GMAIL_USER and GMAIL_PASS set?\n")
+    if not (email and password):
+        sys.stderr.write("GMAIL_USER or GMAIL_PASS not set\n")
         exit(1);
 
-    print "# vim: ft=mutt"
+    contacts = query_contacts(email, password)
 
     Addressbook(contacts).dump(alias_formatter)
