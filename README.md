@@ -30,7 +30,7 @@ I don't trust Offlineimap as a daemon, so I just manually sync every 3
 minutes via [f]cron.
 
 ~~~
-*/3 * * * * /home/you/.mutt/mailrun
+*/3 * * * * /home/you/.mutt/bin/mailrun
 ~~~
 
 If `mailrun` finds an `offlineimap` currently running, it `kill`s it. In 
@@ -58,7 +58,7 @@ This simple script fetches your Gmail contacts using `python-gdata` and
 outputs them in mutt alias format.
 
 ~~~
-$ ./gmail2mutt.py > aliases
+$ bin/gmail2mutt.py > aliases
 ~~~
 
 It uses the environment variables `GMAIL_USER` and `GMAIL_PASS`.
