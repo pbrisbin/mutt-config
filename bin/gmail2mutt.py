@@ -7,40 +7,76 @@
 #
 ###
 
-__author__  = "Patrick Brisbin <pbrisbin@gmail.com>"
-__version__ = "0.1"
-
 import os
 import re
-import sys
-
 import gdata.contacts
 import gdata.contacts.service
 
-if __name__ == '__main__':
-    client = gdata.contacts.service.ContactsService()
+class Addressbook:
+    def __init__(self, contacts):
+        """
+        An Addressbook is initialized from a gdata contacts feed of
+        entries. They are maintained internally as a dictionary of
+        Name->[Email] containing only valid entries.
+        """
+        self.addresses = {}
 
-    try:
-        client.email    = os.environ['GMAIL_USER']
-        client.password = os.environ['GMAIL_PASS']
-    except:
-        sys.stderr.write("GMAIL_USER or GMAIL_PASS unset\n")
-        exit(1)
+        for contact in contacts:
+            name   = contact.title.text
+            emails = contact.email
+
+            if name and emails:
+                curr = self.addresses.get(name, [])
+                new  = map(lambda e: e.address, emails)
+
+                self.addresses[name] = curr + new
+
+    def dump(self, formatter):
+        """
+        Dump our names and emails using the provided formatter which is
+        a function of two arguments: name and array of email addresses.
+        The array is guaranteed to be 1+ elements.
+        """
+        names = self.addresses.keys()
+        names.sort()
+
+        for name in names:
+            formatter(name, self.addresses[name])
+
+
+def query_contacts(email, password, limit = 999999):
+    client = gdata.contacts.service.ContactsService()
+    client.email = email
+    client.password = password
 
     client.ProgrammaticLogin()
 
     query = gdata.contacts.service.ContactsQuery()
-    query.max_results = 999999
+    query.max_results = limit
 
-    # interpolated print used to not confuse vim when editing this file
-    print "# {vim}: ft={ft}".format(vim = "vim", ft = "mutt")
+    return client.GetContactsFeed(query.ToUri()).entry
 
-    for entry in client.GetContactsFeed(query.ToUri()).entry:
-        name = entry.title.text or None
 
-        if name and entry.email:
-            print "alias {key} {name} <{email}>".format(
-                    key   = re.sub(r'\s+', '_', name.lower()),
-                    name  = name,
-                    email = entry.email[0].address
-                    )
+def alias_formatter(name, emails):
+    # TODO: for now we just print the first email of each contact,
+    # eventually we should make incrementing suffixes for contacts with
+    # more than one email
+    print "alias {key} {name} <{email}>".format(
+            key  = re.sub(r'\s+', '_', name.lower()),
+            name = name, email = emails[0]
+            )
+
+
+if __name__ == '__main__':
+    env = os.environ
+
+    try:
+        contacts = query_contacts(env['GMAIL_USER'], env['GMAIL_PASS'])
+    except:
+        sys.stderr.write("Unable to query contacts\n")
+        sys.stderr.write("Are GMAIL_USER and GMAIL_PASS set?\n")
+        exit(1);
+
+    print "# vim: ft=mutt"
+
+    Addressbook(contacts).dump(alias_formatter)
