@@ -79,8 +79,9 @@ macro index ,i "<change-folder>!<return>" "go to inbox"
 macro index ,p "<pipe-message>cat > ~/" "save message as"
 macro index ,z "<shell-escape>offlineimap -q -o<return>" "sync IMAP"
 
-macro index ,v "<collapse-thread>" "collapse/uncollapse thread"
-macro index ,V "<collapse-all>"    "collapse/uncollapse all threads"
+# these are toggle, but i bind both and use them as distinct
+macro index zc      "<collapse-thread>" "collapse thread"
+macro index <space> "<collapse-thread>" "uncollapse thread"
 
 macro index ,r \
   "<tag-pattern>all<return><tag-prefix><clear-flag>N<untag-pattern>all<return>" \
