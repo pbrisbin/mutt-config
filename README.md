@@ -33,9 +33,13 @@ minutes via [f]cron.
 */3 * * * * /home/you/.mutt/bin/mailrun
 ~~~
 
-If `mailrun` finds an `offlineimap` currently running, it `kill`s it. In 
-my experience, it's hung. That said, you should run your first sync 
-manually since it will take *a while*.
+`mailrun` gives offlineimap 60 seconds to complete before forcibly 
+killing that process. In my experience if it's not done in 30, it's 
+hung. You may want to adjust these numbers depending on the size and 
+number of your mailboxes.
+
+Either way, you should run your first sync manually since it will take 
+*a while*.
 
 ## Msmtprc
 
