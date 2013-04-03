@@ -13,16 +13,10 @@ mapping = { 'INBOX':              'INBOX'
 r_mapping = { val: key for key, val in mapping.items() }
 
 def nt_remote(folder):
-    try:
-        return mapping[folder]
-    except:
-        return re.sub(' ', '_', folder).lower()
+    return mapping.get(folder, folder)
 
 def nt_local(folder):
-    try:
-        return r_mapping[folder]
-    except:
-        return re.sub('_', ' ', folder).capitalize()
+    return r_mapping.get(folder, folder)
 
 # folderfilter = exclude(['Label', 'Label', ... ])
 def exclude(excludes):

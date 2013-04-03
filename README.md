@@ -12,17 +12,8 @@ from Remote -> Local must be correctly reversed by the name translation
 going from Local -> Remote. If the translations don't accurately reverse 
 each other, Offlineimap will duplicate folders or error.
 
-My translation logic is consolidated in `./nametrans.py`.
-
-The translations found in `mapping` are tried first. Otherwise, a 
-catchall, regex-based translation is made. The catchall will translate 
-between `Proper case` (remote) and `snake_case` (local). This requires 
-your remote labels and local directories follow this (completely 
-arbitrary) convention.
-
-If you've got labels that cannot be properly translated by this simple 
-rule, you must either exclude them from the sync (see the `exclude` 
-function), or simply add them to `mapping`.
+For this reason, I use a simple mapping found in `./nametrans.py`. Any 
+entries not present in the mapping will be synced as-is.
 
 ## Mailrun
 

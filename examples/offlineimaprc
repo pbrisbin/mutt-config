@@ -2,7 +2,7 @@
 
 [general]
 ui = ttyui
-accounts = Gmail,Ideeli
+accounts = Personal,Work
 maxsyncaccounts = 2
 pythonfile = ~/.mutt/nametrans.py
 
@@ -14,44 +14,42 @@ peritem = "+%(accountname)s/%(foldername)s"
 sep = " "
 footer = "\n"
 
-[Account Gmail]
-localrepository = Gmail-Local
-remoterepository = Gmail-Remote
+[Account Personal]
+localrepository = Personal-Local
+remoterepository = Personal-Remote
 
-[Account Ideeli]
-localrepository = Ideeli-Local
-remoterepository = Ideeli-Remote
+[Account Work]
+localrepository = Work-Local
+remoterepository = Work-Remote
 
-[Repository Gmail-Local]
+[Repository Personal-Local]
 type = Maildir
-localfolders = ~/Mail/Gmail
+localfolders = ~/Mail/Personal
 nametrans = nt_local
 
-[Repository Ideeli-Local]
+[Repository Work-Local]
 type = Maildir
-localfolders = ~/Mail/Ideeli
+localfolders = ~/Mail/Work
 nametrans = nt_local
 
-[Repository Gmail-Remote]
+[Repository Personal-Remote]
 type = Gmail
 remoteuser = you@gmail.com
 remotepass = password
 realdelete = no
-postsynchook = notmuch new
+postsynchook = notmuch new # if you use notmuch
 maxconnections = 3
 nametrans = nt_remote
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt # needed since v6.5.4
 
-# needed since v6.5.4
-sslcacertfile = /etc/ssl/certs/ca-certificates.crt
-
-[Repository Ideeli-Remote]
+[Repository Work-Remote]
 type = Gmail
-remoteuser = you@ideeli.com
+remoteuser = you@work.com
 remotepass = password
 realdelete = no
 maxconnections = 3
 nametrans = nt_remote
-folderfilter = exclude([ 'Foo', 'Bar' ])
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+folderfilter = exclude([ '[Gmail]/All Mail', 'Whatever' ])
 
 # vim: ft=cfg
