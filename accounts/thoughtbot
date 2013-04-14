@@ -1,0 +1,15 @@
+  set from      = "pat@thoughtbot.com"
+  set sendmail  = "/usr/bin/msmtp -a thoughtbot"
+  set mbox      = "+Thoughtbot/all_mail"
+unset record
+  set postponed     = "+Thoughtbot/drafts"
+  set query_command = "mail-query '%s' ~/Mail/Thoughtbot/INBOX"
+  set signature     = ~/.mutt/accounts/gmail_sig
+
+color status cyan default
+
+macro index ,c "<change-folder>+Gmail/INBOX<return>" "change accounts"
+macro index D "<save-message>+Thoughtbot/trash<enter>" "move message to the trash"
+macro index S "<save-message>+Thoughtbot/spam<enter>"  "mark message as spam"
+
+# vim: ft=muttrc

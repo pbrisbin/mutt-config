@@ -51,7 +51,7 @@ auto_view text/html
 alternative_order text/plain text/enriched text/html
 
 folder-hook Gmail/*  source ~/.mutt/accounts/gmail
-folder-hook Ideeli/* source ~/.mutt/accounts/ideeli
+folder-hook Thoughtbot/* source ~/.mutt/accounts/thoughtbot
 folder-hook * "exec collapse-all"
 
 ignore *
