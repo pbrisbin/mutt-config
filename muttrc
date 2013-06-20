@@ -84,7 +84,7 @@ macro index zc      "<collapse-thread>" "collapse thread"
 macro index <space> "<collapse-thread>" "uncollapse thread"
 
 macro index ,r \
-  "<tag-pattern>all<return><tag-prefix><clear-flag>N<untag-pattern>all<return>" \
+  "<tag-pattern>~N<return><tag-prefix><clear-flag>N<untag-pattern>~T<return>" \
   "mark all as read"
 
 macro index ,R \
