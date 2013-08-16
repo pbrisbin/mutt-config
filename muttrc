@@ -94,4 +94,5 @@ macro index ,R \
 source $alias_file
 source ~/.mutt/colors
 source ~/.mutt/mailboxes
+source ~/.mutt/gpg
 source ~/.mutt/accounts/gmail
