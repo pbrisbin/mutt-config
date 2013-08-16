@@ -64,6 +64,7 @@ subscribe arch-announce arch-dev-public arch-haskell aur-general \
 bind index i  noop
 bind index gg first-entry
 bind index G  last-entry
+bind index N  search-opposite
 bind pager i  exit
 bind pager q  toggle-quoted
 bind pager /  search
