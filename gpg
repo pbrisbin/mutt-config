@@ -1,5 +1,3 @@
-# vim: ft=muttrc:
-
 source /usr/share/doc/mutt/samples/gpg.rc
 
 set pgp_timeout = 3600
@@ -8,3 +6,5 @@ set crypt_replyencrypt = yes
 
 set pgp_sign_as = CEC8925D
 my_hdr X-PGP-Key: http://files.pbrisbin.com/public.key
+
+# vim: ft=muttrc:
