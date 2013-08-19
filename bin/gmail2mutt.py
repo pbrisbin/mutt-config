@@ -3,7 +3,7 @@
 # Very stripped-down, simplified, feature-less version of gcontacts.py
 # by Jim Karsten.
 #
-# $ GMAIL_USER='x@gmail.com' GMAIL_PASS='x' ./gmail2mutt.py > aliases
+# $ GMAIL_USER='x@gmail.com' GMAIL_PASSWORD='x' ./gmail2mutt.py > aliases
 #
 ###
 
@@ -71,10 +71,10 @@ def alias_formatter(name, emails):
 
 if __name__ == '__main__':
     email    = os.environ.get('GMAIL_USER')
-    password = os.environ.get('GMAIL_PASS')
+    password = os.environ.get('GMAIL_PASSWORD')
 
     if not (email and password):
-        sys.stderr.write("GMAIL_USER or GMAIL_PASS not set\n")
+        sys.stderr.write("GMAIL_USER or GMAIL_PASSWORD not set\n")
         exit(1);
 
     contacts = query_contacts(email, password)

@@ -56,7 +56,7 @@ outputs them in mutt alias format.
 $ bin/gmail2mutt.py > aliases
 ~~~
 
-It uses the environment variables `GMAIL_USER` and `GMAIL_PASS`.
+It uses the environment variables `GMAIL_USER` and `GMAIL_PASSWORD`.
 
 ## Mutt
 
