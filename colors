@@ -47,6 +47,11 @@ uncolor index "~D"
   color signature  cyan          default
   color tilde      blue          default
 
+# gpg
+  color body       brightgreen   default "^gpg: Good signature.*"
+  color body       brightred     default "^gpg: BAD signature.*"
+  color body       yellow        default "^gpg: Can't check signature.*"
+
 # urls
   color body       brightblue    default "(^|<| )mailto:[^ ]+@[^ ]( |>|$)"
   color body       brightblue    default "(^|<| )(http|https|ftp|file|telnet|news|finger)://[^ ]+( |>|$)"
