@@ -2,18 +2,16 @@
 
 This is my `~/.mutt`.
 
-## Offlineimap
+## Offlineimap and Msmtp
 
 Two Gmail accounts are kept in sync with directories under `~/Mail` via 
-Offlineimap. See the config in `./examples`.
+Offlineimap. Msmtprc is used to send emails from either account via the 
+commandline or Mutt.
 
-Newer Offlineimap is very strict in that any name translation used going 
-from Remote -> Local must be correctly reversed by the name translation 
-going from Local -> Remote. If the translations don't accurately reverse 
-each other, Offlineimap will duplicate folders or error.
+You can find the relevant configs for both of these tools in my 
+[dotfiles][] repo.
 
-For this reason, I use a simple mapping found in `./nametrans.py`. Any 
-entries not present in the mapping will be synced as-is.
+[dotfiles]: https://github.com/pbrisbin/dotfiles
 
 ## Mailrun
 
@@ -31,11 +29,6 @@ number of your mailboxes.
 
 Either way, you should run your first sync manually since it will take 
 *a while*.
-
-## Msmtprc
-
-Msmtprc is used to send emails from either account via the commandline 
-or Mutt. See the config in `./examples`.
 
 ## Mail query
 
