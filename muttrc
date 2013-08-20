@@ -1,11 +1,8 @@
 # vim: ft=muttrc
 
-  set alias_file        = ~/.mutt/aliases
-  set alias_format      = "%4n %t %-20a %r"
   set askcc
   set beep_new
 unset confirmappend
-  set date_format       = "%m/%d/%y at %I:%M%P"
   set delete
   set edit_headers
   set editor            = "vim +:silent+?^$"
@@ -32,7 +29,6 @@ unset markers
   set realname          = "Patrick Brisbin"
   set reply_regexp      = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
   set reply_to
-  set reverse_alias
   set reverse_name
   set sort              = threads
   set sort_aux          = reverse-last-date-received
@@ -50,7 +46,7 @@ alternates .*@pbrisbin\.com
 auto_view text/html
 alternative_order text/plain text/enriched text/html
 
-folder-hook Gmail/*  source ~/.mutt/accounts/gmail
+folder-hook Gmail/*      source ~/.mutt/accounts/gmail
 folder-hook Thoughtbot/* source ~/.mutt/accounts/thoughtbot
 folder-hook * "exec collapse-all"
 
@@ -92,7 +88,6 @@ macro index ,R \
   "<collapse-all>,r<collapse-all>" \
   "mark all as read (collapsed)"
 
-source $alias_file
 source ~/.mutt/colors
 source ~/.mutt/mailboxes
 source ~/.mutt/gpg
