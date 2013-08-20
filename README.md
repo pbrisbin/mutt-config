@@ -40,17 +40,6 @@ It is available in its own [repo][].
 
 [repo]: https://github.com/pbrisbin/mail-query
 
-## Gmail2mutt
-
-This simple script fetches your Gmail contacts using `python-gdata` and 
-outputs them in mutt alias format.
-
-~~~
-$ bin/gmail2mutt.py > aliases
-~~~
-
-It uses the environment variables `GMAIL_USER` and `GMAIL_PASSWORD`.
-
 ## Mutt
 
 Mutt accesses the mailboxes under the two synced folders in `~/Mail` and 
