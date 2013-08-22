@@ -91,4 +91,5 @@ macro index ,R \
 source ~/.mutt/colors
 source ~/.mutt/mailboxes
 source ~/.mutt/gpg
+source ~/.mutt/notmuch
 source ~/.mutt/accounts/gmail
