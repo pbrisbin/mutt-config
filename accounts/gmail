@@ -4,7 +4,6 @@
 unset record
   set postponed     = "+Gmail/drafts"
   set query_command = "mail-query '%s' ~/Mail/Gmail/INBOX"
-  set signature     = ~/.mutt/accounts/gmail_sig
 
 color status green default
 

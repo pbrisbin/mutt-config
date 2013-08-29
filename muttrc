@@ -30,6 +30,7 @@ unset markers
   set reply_regexp      = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
   set reply_to
   set reverse_name
+  set signature         = ~/.mutt/signature
   set sort              = threads
   set sort_aux          = reverse-last-date-received
 unset sort_re

@@ -4,7 +4,6 @@
 unset record
   set postponed     = "+Thoughtbot/drafts"
   set query_command = "mail-query '%s' ~/Mail/Thoughtbot/INBOX"
-  set signature     = ~/.mutt/accounts/gmail_sig
 
 color status cyan default
 
