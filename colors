@@ -1,3 +1,5 @@
+# vim: ft=muttrc
+
 # set default
   color normal      white         default
 
@@ -74,5 +76,3 @@ uncolor index "~D"
   color quoted5    green         default
   color quoted6    magenta       default
   color quoted7    cyan          default
-
-# vim: ft=muttrc

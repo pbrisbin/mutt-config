@@ -47,10 +47,6 @@ alternates .*@pbrisbin\.com
 auto_view text/html
 alternative_order text/plain text/enriched text/html
 
-folder-hook Gmail/*      source ~/.mutt/accounts/gmail
-folder-hook Thoughtbot/* source ~/.mutt/accounts/thoughtbot
-folder-hook * "exec collapse-all"
-
 ignore *
 unignore from: to: cc: date: subject:
 hdr_order from: to: cc: date: subject:
@@ -58,39 +54,9 @@ hdr_order from: to: cc: date: subject:
 subscribe arch-announce arch-dev-public arch-haskell aur-general \
           rubyparley web-devel xmonad yesod
 
-bind index i  noop
-bind index gg first-entry
-bind index G  last-entry
-bind index N  search-opposite
-bind pager i  exit
-bind pager q  toggle-quoted
-bind pager /  search
-bind pager j  next-line
-bind pager k  previous-line
-bind pager gg top
-bind pager G  bottom
-bind index,pager \# noop
-bind index,pager \& noop
-bind index,pager R  group-reply
-
-macro index ,i "<change-folder>!<return>" "go to inbox"
-macro index ,p "<pipe-message>cat > ~/" "save message as"
-macro index ,z "<shell-escape>offlineimap -q -o<return>" "sync IMAP"
-
-# these are toggle, but i bind both and use them as distinct
-macro index zc      "<collapse-thread>" "collapse thread"
-macro index <space> "<collapse-thread>" "uncollapse thread"
-
-macro index ,r \
-  "<tag-pattern>~N<return><tag-prefix><clear-flag>N<untag-pattern>~T<return>" \
-  "mark all as read"
-
-macro index ,R \
-  "<collapse-all>,r<collapse-all>" \
-  "mark all as read (collapsed)"
-
 source ~/.mutt/colors
 source ~/.mutt/mailboxes
+source ~/.mutt/bindings
+source ~/.mutt/macros
 source ~/.mutt/gpg
-source ~/.mutt/notmuch
-source ~/.mutt/accounts/gmail
+source ~/.mutt/hooks
