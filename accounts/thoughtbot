@@ -1,9 +1,9 @@
-  set from      = "pat@thoughtbot.com"
-  set sendmail  = "/usr/bin/msmtp -a thoughtbot"
-  set mbox      = "+Thoughtbot/all_mail"
-unset record
-  set postponed     = "+Thoughtbot/drafts"
-  set query_command = "mail-query '%s' ~/Mail/Thoughtbot/INBOX"
+# vim: ft=muttrc
+set from          = "pat@thoughtbot.com"
+set sendmail      = "/usr/bin/msmtp -a thoughtbot"
+set mbox          = "+Thoughtbot/all_mail"
+set postponed     = "+Thoughtbot/drafts"
+set query_command = "mail-query '%s' ~/Mail/Thoughtbot/INBOX"
 
 color status cyan default
 
@@ -13,5 +13,3 @@ macro index S "<save-message>+Thoughtbot/spam<enter>"  "mark message as spam"
 
 set pgp_sign_as = 0A9B23E2
 my_hdr X-PGP-Key: http://files.pbrisbin.com/thoughtbot-public.key
-
-# vim: ft=muttrc
