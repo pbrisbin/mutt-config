@@ -1,3 +1,10 @@
+*NOTE: My Mutt configuration has been moved in with my main [dotfiles][] 
+repo. Any future updates will occur there.*
+
+[dotfiles]: https://github.com/pbrisbin/dotfiles
+
+---
+
 # Mutt
 
 This is my `~/.mutt`.
